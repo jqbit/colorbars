@@ -2,6 +2,10 @@
 # colorbars: compact color-coded statusline for Claude Code
 # Reads session JSON from stdin
 
+for dep in jq python3; do
+  command -v "$dep" >/dev/null 2>&1 || { printf 'colorbars: missing dependency: %s\n' "$dep"; exit 0; }
+done
+
 input=$(cat)
 
 # --- Line 1: model + token counts ---
