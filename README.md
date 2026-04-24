@@ -16,6 +16,17 @@ ctx: ██▒░░ 48% | 5h: ░░░░░ 4% 3.1h | 7d: ██░░░ 41%
 
 ## Install
 
+Requires `jq` and `python3`. Install first if missing:
+
+```bash
+# Debian/Ubuntu
+sudo apt install jq python3
+# macOS
+brew install jq python3
+```
+
+Then:
+
 ```bash
 mkdir -p ~/.claude
 curl -o ~/.claude/statusline.sh https://raw.githubusercontent.com/jqbit/colorbars/main/statusline.sh
