@@ -3,7 +3,13 @@
 # Reads session JSON from stdin
 
 command -v jq >/dev/null 2>&1 || { printf 'colorbars: missing dependency: jq\n'; exit 0; }
-PYTHON=$(command -v python3 || command -v python)
+PYTHON=""
+for cand in python3 python; do
+  if command -v "$cand" >/dev/null 2>&1 && "$cand" -c "" >/dev/null 2>&1; then
+    PYTHON=$cand
+    break
+  fi
+done
 [ -z "$PYTHON" ] && { printf 'colorbars: missing dependency: python3 or python\n'; exit 0; }
 
 input=$(cat)
