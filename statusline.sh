@@ -2,9 +2,9 @@
 # colorbars: compact color-coded statusline for Claude Code
 # Reads session JSON from stdin
 
-for dep in jq python3; do
-  command -v "$dep" >/dev/null 2>&1 || { printf 'colorbars: missing dependency: %s\n' "$dep"; exit 0; }
-done
+command -v jq >/dev/null 2>&1 || { printf 'colorbars: missing dependency: jq\n'; exit 0; }
+PYTHON=$(command -v python3 || command -v python)
+[ -z "$PYTHON" ] && { printf 'colorbars: missing dependency: python3 or python\n'; exit 0; }
 
 input=$(cat)
 
@@ -24,7 +24,7 @@ WIN_K=$(fmt_k "${WIN_SIZE:-0}")
 printf "%s (%s/%s)\n" "${MODEL}" "${USED_K}" "${WIN_K}"
 
 # --- Line 2: per-metric mini bars (ctx, 5h, 7d) ---
-echo "$input" | python3 -c "
+echo "$input" | "$PYTHON" -c "
 import json, sys, time
 
 data = json.load(sys.stdin)

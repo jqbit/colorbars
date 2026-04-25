@@ -49,7 +49,7 @@ Restart Claude Code.
 ## Requirements
 
 - `jq`
-- Python 3
+- Python 3 (invoked as `python3`, falling back to `python`)
 
 ## Color thresholds
 
