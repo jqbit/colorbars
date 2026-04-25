@@ -16,16 +16,20 @@ ctx: ██▒░░ 48% | 5h: ░░░░░ 4% 3.1h | 7d: ██░░░ 41%
 
 ## Install
 
-Requires `jq` and `python3`. Install first if missing:
+Requires `jq` and Python 3. Install first if missing:
 
 ```bash
 # Debian/Ubuntu
 sudo apt install jq python3
 # macOS
 brew install jq python3
+# Windows (Chocolatey, in an admin shell)
+choco install jq python -y
 ```
 
-Then:
+On Windows the script invokes `python` when `python3` isn't available, and skips the Microsoft Store `python3` stub if it's installed.
+
+Then, in a bash shell (Git Bash on Windows):
 
 ```bash
 mkdir -p ~/.claude
@@ -49,7 +53,7 @@ Restart Claude Code.
 ## Requirements
 
 - `jq`
-- Python 3 (invoked as `python3`, falling back to `python`)
+- Python 3 — invoked as `python3`, falling back to `python` (handles Windows installs that only register `python.exe`)
 
 ## Color thresholds
 
