@@ -87,5 +87,5 @@ for key, label in (('five_hour','5h'),('seven_day','7d')):
         seg += f' {fmt_remain(rem, key)}'
     out += seg
 
-sys.stdout.write(out)
+sys.stdout.buffer.write(out.encode('utf-8'))
 "
